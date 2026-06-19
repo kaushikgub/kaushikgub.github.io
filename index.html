@@ -1,0 +1,203 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-mono);background:transparent}
+.p{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem}
+
+.prompt-line{font-size:12px;color:var(--color-text-secondary);margin-bottom:0.25rem;letter-spacing:0.01em}
+.prompt-line .sym{color:#1D9E75}
+.hero-name{font-size:28px;font-weight:500;color:var(--color-text-primary);font-family:var(--font-mono);letter-spacing:-0.5px;margin-bottom:2px}
+.hero-sub{font-size:13px;color:var(--color-text-secondary);font-family:var(--font-mono);margin-bottom:1.25rem}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
+.badge{font-size:11px;font-family:var(--font-mono);padding:3px 10px;border-radius:4px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);display:flex;align-items:center;gap:5px}
+.badge .dot{width:5px;height:5px;border-radius:50%;background:#1D9E75;flex-shrink:0}
+.badge.hi{background:#E1F5EE;border-color:#5DCAA5;color:#085041}
+.summary-block{border-left:2px solid #1D9E75;padding-left:1rem;margin-bottom:2rem;border-radius:0}
+.summary-block p{font-size:13px;line-height:1.8;color:var(--color-text-secondary);font-family:var(--font-sans)}
+.link-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.lnk{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-family:var(--font-mono);color:#1D9E75;text-decoration:none;padding:5px 12px;border:0.5px solid #5DCAA5;border-radius:4px;background:#E1F5EE}
+.lnk:hover{background:#9FE1CB}
+
+.sec{margin-bottom:2.5rem}
+.sec-hd{font-size:11px;font-family:var(--font-mono);color:#1D9E75;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sec-hd::after{content:"";flex:1;height:0.5px;background:var(--color-border-tertiary)}
+
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.sk{font-size:12px;font-family:var(--font-mono);padding:6px 10px;border:0.5px solid var(--color-border-tertiary);border-radius:4px;color:var(--color-text-secondary);display:flex;align-items:center;gap:6px}
+.sk::before{content:">";color:#1D9E75;font-weight:500}
+.sk.core{color:var(--color-text-primary);border-color:var(--color-border-secondary)}
+
+.exp-item{padding:1.25rem 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.exp-item:last-child{border-bottom:none}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:2px}
+.exp-role{font-size:14px;font-weight:500;font-family:var(--font-mono);color:var(--color-text-primary)}
+.exp-range{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary);padding-top:2px;white-space:nowrap}
+.exp-co{font-size:12px;font-family:var(--font-mono);color:#1D9E75;margin-bottom:10px}
+.bul{font-size:13px;font-family:var(--font-sans);color:var(--color-text-secondary);line-height:1.65;padding:3px 0 3px 1rem;position:relative}
+.bul::before{content:"//";position:absolute;left:0;color:#5DCAA5;font-size:11px;font-family:var(--font-mono);top:5px}
+
+.proj{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:4px;padding:1rem 1.25rem;margin-bottom:8px}
+.proj:hover{border-color:var(--color-border-secondary)}
+.proj-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.proj-name{font-size:13px;font-weight:500;font-family:var(--font-mono);color:var(--color-text-primary)}
+.proj-bdg{font-size:10px;font-family:var(--font-mono);padding:2px 8px;border-radius:3px;background:#E1F5EE;color:#085041;border:0.5px solid #5DCAA5}
+.proj-desc{font-size:13px;font-family:var(--font-sans);color:var(--color-text-secondary);line-height:1.65;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;font-family:var(--font-mono);padding:2px 8px;border-radius:3px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+
+.edu-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:1rem 1.25rem;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:4px}
+.edu-deg{font-size:13px;font-weight:500;font-family:var(--font-mono);color:var(--color-text-primary)}
+.edu-uni{font-size:12px;font-family:var(--font-mono);color:var(--color-text-secondary);margin-top:2px}
+.edu-yr{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary)}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.ct{display:flex;align-items:center;gap:8px;font-size:12px;font-family:var(--font-mono);color:var(--color-text-secondary)}
+.ct i{font-size:15px;color:#1D9E75}
+
+.foot{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary);text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:0.5px solid var(--color-border-tertiary)}
+.foot .sym{color:#1D9E75}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Kaushik Mallik — Senior Software Engineer portfolio</h2>
+
+<div class="p">
+
+  <div style="margin-bottom:2rem">
+    <div class="prompt-line"><span class="sym">~/portfolio</span> $ whoami</div>
+    <div class="hero-name">Kaushik Mallik</div>
+    <div class="hero-sub">Senior Software Engineer · Dhaka, BD</div>
+    <div class="badge-row">
+      <div class="badge hi"><span class="dot"></span><span id="yoe-badge">loading...</span></div>
+      <div class="badge"><span class="dot"></span>Distributed Systems</div>
+      <div class="badge"><span class="dot"></span>Event-Driven Architecture</div>
+      <div class="badge"><span class="dot"></span>Data Engineering</div>
+      <div class="badge"><span class="dot"></span>AWS</div>
+    </div>
+    <div class="summary-block">
+      <p>I build distributed systems that scale — microservices, event-driven pipelines, and data infrastructure. Currently at Field Nation, where I lead technical initiatives from RFC to production across TypeScript, Kafka, RabbitMQ, and AWS.</p>
+    </div>
+    <div class="link-row">
+      <a class="lnk" href="https://github.com/kaushikgub"><i class="ti ti-brand-github" aria-hidden="true"></i> kaushikgub</a>
+      <a class="lnk" href="https://linkedin.com/in/kaushik1312"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> kaushik1312</a>
+      <a class="lnk" href="mailto:kaushik.gub@gmail.com"><i class="ti ti-mail" aria-hidden="true"></i> kaushik.gub@gmail.com</a>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd">// stack</div>
+    <div class="skill-grid">
+      <div class="sk core">TypeScript / Node.js</div>
+      <div class="sk core">NestJS</div>
+      <div class="sk core">Kafka</div>
+      <div class="sk core">RabbitMQ</div>
+      <div class="sk core">PostgreSQL</div>
+      <div class="sk core">Redis</div>
+      <div class="sk core">dbt</div>
+      <div class="sk core">OpenSearch / ES</div>
+      <div class="sk">Kubernetes / Helm</div>
+      <div class="sk">AWS (RDS, EC2, S3, Lambda)</div>
+      <div class="sk">PHP 8 / Laravel</div>
+      <div class="sk">Go (Golang)</div>
+      <div class="sk">Docker / Tilt</div>
+      <div class="sk">GitHub Actions</div>
+      <div class="sk">Datadog</div>
+      <div class="sk">React</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd">// experience</div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Senior Software Engineer</div>
+        <div class="exp-range">May 2022 → present</div>
+      </div>
+      <div class="exp-co">Field Nation · Dhaka</div>
+      <div class="bul">Led discovery and execution of complex distributed features — high-level business goals into scalable technical roadmaps via RFCs.</div>
+      <div class="bul">Designed event-driven microservices with RabbitMQ and Kafka; owned the Provider Quality Scoring pipeline on the Quartz team.</div>
+      <div class="bul">Built Kubernetes/Helm starter kits and CI/CD pipelines, reducing team deployment overhead by 40%.</div>
+      <div class="bul">Implemented OpenSearch clusters and dbt transformation workflows for platform analytics and search.</div>
+      <div class="bul">Won Field Nation AI Hackathon 2026 with an agentic Wiz vulnerability remediation pipeline using six specialized AI agents.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-range">Nov 2021 → Apr 2022</div>
+      </div>
+      <div class="exp-co">BRAC IT Services (biTS) · Dhaka</div>
+      <div class="bul">Developed Webhook systems and RESTful APIs for inter-service communication across internal banking platforms.</div>
+      <div class="bul">Delivered full-stack features in NestJS and React with a focus on security and performance.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-range">Aug 2020 → Oct 2021</div>
+      </div>
+      <div class="exp-co">Skylark Soft Limited · Dhaka</div>
+      <div class="bul">Optimized complex MySQL queries and refactored legacy ERP code to improve system response times.</div>
+      <div class="bul">Built core modules in close collaboration with QA to maintain rigorous quality standards.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd">// projects</div>
+    <div class="proj">
+      <div class="proj-top">
+        <span class="proj-name">boi-len-den</span>
+        <span class="proj-bdg">personal</span>
+      </div>
+      <p class="proj-desc">Book rental platform — seven microservices with transactional outbox pattern, idempotent Kafka consumers, RS256 asymmetric JWT signing, distributed locks via Redis, and TanStack Query on the frontend.</p>
+      <div class="tags"><span class="tag">NestJS</span><span class="tag">Kafka</span><span class="tag">RabbitMQ</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">React / MUI</span><span class="tag">RS256 JWT</span></div>
+    </div>
+    <div class="proj">
+      <div class="proj-top">
+        <span class="proj-name">AI Vulnerability Remediation Pipeline</span>
+        <span class="proj-bdg">hackathon · winner</span>
+      </div>
+      <p class="proj-desc">Six specialized agents (Architect, Coder, Tester, Reviewer, Deployer, Technical PM) that automate Wiz security findings into deployed fixes — human approval is the only required touchpoint. Won Field Nation AI Hackathon 2026.</p>
+      <div class="tags"><span class="tag">multi-agent AI</span><span class="tag">Wiz</span><span class="tag">security automation</span><span class="tag">CI/CD</span></div>
+    </div>
+    <div class="proj">
+      <div class="proj-top">
+        <span class="proj-name">Provider Quality Scoring System (PSS)</span>
+      </div>
+      <p class="proj-desc">Core contributor to Field Nation's provider reputation pipeline — dbt models transforming event-log data into quality scores, Kafka-driven event ingestion, and Datadog dashboards tracking pipeline health.</p>
+      <div class="tags"><span class="tag">dbt</span><span class="tag">Kafka</span><span class="tag">Redshift</span><span class="tag">Datadog</span><span class="tag">TypeScript</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd">// education</div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-deg">B.Sc. in Computer Science &amp; Engineering</div>
+        <div class="edu-uni">Green University of Bangladesh</div>
+      </div>
+      <div class="edu-yr">2015 – 2018 · Dhaka</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd">// contact</div>
+    <div class="contact-grid">
+      <div class="ct"><i class="ti ti-mail"></i> kaushik.gub@gmail.com</div>
+      <div class="ct"><i class="ti ti-phone"></i> 01855601369</div>
+      <div class="ct"><i class="ti ti-brand-github"></i> github.com/kaushikgub</div>
+      <div class="ct"><i class="ti ti-brand-linkedin"></i> linkedin.com/in/kaushik1312</div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="sym">$</span> echo "built with code, shipped with care" <span class="sym">·</span> open to opportunities</div>
+
+</div>
+
+<script>
+(function(){
+  var start = new Date('2020-08-01');
+  var now = new Date();
+  var years = (now - start) / (1000 * 60 * 60 * 24 * 365.25);
+  var floored = Math.floor(years);
+  var el = document.getElementById('yoe-badge');
+  if(el) el.textContent = floored + '+ yrs experience';
+})();
+</script>
